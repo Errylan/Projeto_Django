@@ -14,6 +14,25 @@ class TB_ALUNO(models.Model):
     EMAIL = models.TextField('EMAIL')
     PROJETO = models.ForeignKey(TB_PROJETOS, on_delete=models.PROTECT)
 
+class Area (models.Model):
+    nome = models.CharField('Nome', max_length=50)
+
+class Publicos (models.Model):
+    nome = models.CharField('Nome', max_length=50)
+
+class Instrutor (models.Model):
+    nome = models.CharField('Nome', max_length=50)
+
+class Curso (models.Model):
+    titulo = models.CharField('Título', max_length=100)
+    descricao = models.TextField('Descrição')
+    vagas = models.IntegerField
+    instrutor = models.ForeignKey(Instrutor, on_delete=models.PROTECT)
+    area = models.ForeignKey(Area, on_delete=models.PROTECT)
+    publicos = models.ManyToManyField(Publicos)
+
+
+ 
 
 
 

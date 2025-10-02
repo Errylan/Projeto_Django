@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Area
 
 def index(request):
     return render (request, 'index.html')
@@ -6,4 +7,10 @@ def index(request):
 def categorias(request):
     return render (request, 'categorias.html')
 
+def  areas(request):
+    areas = Area.objects.all()
+    contexto ={
+        'lista_areas': areas
+    }
+    return render (request, 'areas.html', contexto)
 
