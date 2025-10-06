@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Area
+from .forms import AreaForm
 
 def index(request):
     return render (request, 'index.html')
@@ -13,4 +14,11 @@ def  areas(request):
         'lista_areas': areas
     }
     return render (request, 'areas.html', contexto)
+
+def area_cadastro(request):
+    form = AreaForm(request.POST or None)
+    contexto ={
+        'form' :form
+    }
+    return render(request, 'area_cadastro.html', contexto)
 
