@@ -11,7 +11,10 @@
 
     <p>Lista de Área</p>
     {% for area in lista_areas %}
-    <p>{{ area.nome }}</p>
+    <p>{{ area.nome }} 
+        | <a href="{% url 'area_editar' area.id%}">EDITAR </a>
+        | <a href="{% url 'area_remover' area.id%}">APAGAR</a>
+    </p>
     {% empty%}
     <p>Nenhuma área cadastrada</p>
 
