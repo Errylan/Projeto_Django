@@ -2,6 +2,8 @@ from django.urls import path
 from .views import index, categorias, areas
 from .views import areas, area_cadastro, area_remover, area_editar
 from .views import instrutor, instrutor_cadastro, instrutor_remover, instrutor_editar
+from .views import publico
+
 
 urlpatterns = [
     path('', index, name='index'),
@@ -13,4 +15,5 @@ urlpatterns = [
     path('instrutor/', instrutor, name='instrutor'),
     path('instrutor_remover/<int:id>/',instrutor_remover, name='instrutor_remover'),
     path('instrutor_editar/<int:id>/',instrutor_editar, name='instrutor_editar'),
+    path('instrutor_cadastro/', instrutor_cadastro, name='instrutor_cadastro')
 ]
