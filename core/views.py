@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+<<<<<<< HEAD
 from .models import Area, Publico, Instrutor
 from .forms import AreaForm, PublicoForm, InstrutorForm, UsuarioForm
 from django.contrib.auth import authenticate, login, logout
@@ -25,6 +26,10 @@ def autenticacao(request):
 def desconectar(request):
     logout(request)
     return redirect('index')
+=======
+from .models import Area, Instrutor, Publicos
+from .forms import AreaForm, InstrutorForm, PublicoForm
+>>>>>>> e0f5687a5e823212a1eea974a2b359727c074cc1
 
 def index(request):
     return render(request, 'index.html')
@@ -61,12 +66,96 @@ def area_editar(request, id):
 
     if form.is_valid():
         form.save()
+<<<<<<< HEAD
         return redirect('areas')
     
+=======
+        return redirect ('areas')
+
     contexto = {
         'form':form
     }
 
+    return render(request, 'area_cadastro.html', contexto)
+
+def  publicos(request):
+    publicos = Publicos.objects.all()
+    contexto ={
+        'lista_publicos': publicos
+    }
+    return render (request, 'publicos.html', contexto)
+
+def publicos_cadastro(request):
+    form = PublicoForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('publicos')
+
+
+
+    contexto ={
+        'form' :form
+    }
+    return render(request, 'publico_cadastro.html', contexto)
+
+def publicos_remover(request, id):
+    publicos = Publicos.objects.get(pk=id)
+    publicos.delete()
+    return redirect('publicos')
+
+def publicos_editar(request, id):
+    area = Publicos.objects.get(pk=id)
+    form = PublicoForm(request.POST or None, instance=publicos)
+
+    if form.is_valid():
+        form.save()
+        return redirect ('publicos')
+
+    contexto = {
+        'form':form
+    }
+
+    return render(request, 'publico_cadastro.html', contexto)
+
+def  instrutor(request):
+    instrutor = Instrutor.objects.all()
+    contexto ={
+        'lista_instrutor': instrutor
+    }
+    return render (request, 'instrutor.html', contexto)
+
+def instrutor_cadastro(request):
+    form = InstrutorForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('instrutor')
+
+
+
+    contexto ={
+        'form' :form
+    }
+    return render(request, 'instrutor_cadastro.html', contexto)
+
+def instrutor_remover(request, id):
+    instrutor = instrutor.objects.get(pk=id)
+    instrutor.delete()
+    return redirect('instrutor')
+
+def instrutor_editar(request, id):
+    area = Instrutor.objects.get(pk=id)
+    form = InstrutorForm(request.POST or None, instance=instrutor)
+
+    if form.is_valid():
+        form.save()
+        return redirect ('instrutor')
+
+>>>>>>> e0f5687a5e823212a1eea974a2b359727c074cc1
+    contexto = {
+        'form':form
+    }
+
+<<<<<<< HEAD
     return render(request, 'area_cadastro.html', contexto)
 
 
@@ -112,3 +201,6 @@ def registro(request):
     
     contexto = {'formuser': formuser}
     return render(request, 'cadastro.html', contexto)
+=======
+    return render(request, 'instrutor_cadastro.html', contexto)
+>>>>>>> e0f5687a5e823212a1eea974a2b359727c074cc1
