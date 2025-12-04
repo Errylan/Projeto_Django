@@ -6,7 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Categorias</h1>
-    
+    <h1>Públicos</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{form}}
+        <p><input type="submit" value="Enviar" ></p>
+    </form>
 </body>
 </html>

@@ -1,17 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Página Inicial</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
     <p>Página Inicial</p>
-    <p><a href="{% url 'categorias' %}">Gerenciar Categorias</a></p>
-    <p><a href="{% url 'areas' %}">Gerenciar Áreas</a></p>
 
+    {% if user.is_authenticated %}
+        <p><a href="{% url 'perfil' %}">Perfil</a></p>
+        <p><a href="{% url 'desconectar' %}">Desconectar</a></p>
+    {% else %}
+        <p><a href="{% url 'login' %}">Login</a></p>
+        <p><a href="{% url 'cadastro' %}">Cadastro</a></p>
+
+    {% endif %}
+    
+    
+    <p><a href="{% url 'categorias' %}">Gerenciar 
+        Categorias</a></p>
+    <p><a href="{% url 'areas' %}">Gerenciar Áreas</a></p>
+    <p><a href="{% url 'publicos' %}">Gerenciar Públicos</a></p>
 </body>
 </html>
